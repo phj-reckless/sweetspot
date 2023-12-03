@@ -1,0 +1,126 @@
+<!-- sweetspot/signup.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Background -->
+        {% include 'base.html' %}
+        <title>Sweet Spot | 회원가입</title>
+    </head>
+    <body>
+        <header>
+            <!-- Navigation-->
+            {% include 'navbar.html' %}
+        </header>
+        <div class="SignUp-Main">
+            <div class="SignUp-MainText">
+                <h1 style="text-shadow: 2px 2px black;"><b>Sign Up</b></h1>
+            </div>
+            <form method="post" action="{% url 'users:signup' %}">
+            <div class="SignUp-inputs">
+                {% csrf_token %}
+                {% include 'form_errors.html' %}
+                <p><b>아이디</b></p>
+                <input type="text" name="user_id" id="user_id" style="width: 60%;" placeholder="  아이디 입력 (6~20자)" value="{{ form.user_id.value|default_if_none:'' }}">
+                <button style="margin-left: 25px;">중복확인</button>
+                <p><b>비밀번호</b></p>
+                <input type="password" name="password1" id="password1" placeholder="  비밀번호 입력 (문자, 숫자, 특수문자 포함 8~20자)" value="{{ form.password1.value|default_if_none:'' }}">
+                <p><b>비밀번호 확인</b></p>
+                <input type="password" name="password2" id="password2" placeholder="  비밀번호 재입력" value="{{ form.password2.value|default_if_none:'' }}">
+               <!--
+                <p><b>이름</b></p>
+                <input type="text" name="username" id="username" placeholder="  이름을 입력해주세요" value="{{ form.username.value|default_if_none:'' }}">
+                -->
+                <p><b>전화번호</b></p>
+                <input name="hp" id="hp" placeholder="  휴대폰 번호 입력 ('-'제외 11자리 입력)" value="{{ form.hp.value|default_if_none:'' }}">
+                <p><b>이메일 주소</b></p>
+                <input type="email" name="email" id="email" pattern=".+@gmail\.com" placeholder="  example@gmail.com" value="{{ form.email.value|default_if_none:'' }}">
+                <!--
+                <p><b>생년월일</b></p>
+                <select id="year" name="year" style="font-size: 20px;" required>
+                    <option value="" disabled selected>년도</option>
+                </select>
+                <select id="month" name="month" style="font-size: 20px;" required>
+                    <option value="" disabled selected>월</option>
+                </select>
+                <select id="day" name="day" style="font-size: 20px;" required>
+                    <option value="" disabled selected>일</option>
+                </select>
+                -->
+            </div>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+            <div class="agree">
+                <i class="fa-solid fa-check">
+                    <p><b>이용약관</b></p>
+                </i>
+                <div style="color: black;">제1조 (목적)
+                    본 약관은 RadarLab Inc. (이하 “회사”라 합니다)가 제공하는 멘트리 서비스 및 멘트리 관련 제반 서비스의 이용과 관련하여 회사와 회원의 권리, 의무 및 책임 사항 기타 필요한 사항을 규정함을 목적으로 합니다.
+                    제2조 (용어의 정의)
+                    본 약관에서 사용하는 용어의 정의는 아래와 같습니다. 본 약관에 명시되지 않은 용어는 관련 법령이 정하는 바에 따르며, 그 외에는 일반적인 상거래 관행에 의합니다.
+                    "서비스"란 PC, 휴대용 단말기 등 각종 유무선 기기 또는 프로그램을 통하여 이용할 수 있도록 "회사"가 제공하는 모든 인터넷 서비스를 말하며, "회사"가 공개한 API를 이용하여 제삼자가 개발 또는 구축한 프로그램이나 서비스를 통하여 회원에게 제공되는 경우를 포함합니다.
+                    "회원"이란 서비스를 이용하기 위하여 동 약관에 동의하거나 구글 등 연동된 서비스를 통해 "회사"가 제공하는 서비스에 가입한 자를 말합니다.
+                    회원 중 멘토링을 제공하는 사용자를 “멘토”, 멘토링을 제공 받는 사용자를 “멘티”라고 합니다.
+                    "아이디"라 함은 회원의 식별과 회원의 서비스 이용을 위하여 "회원"이 가입 시 사용한 이메일 주소를 말합니다.
+                    "비밀번호"라 함은 "회사"의 서비스를 이용하려는 사람이 아이디를 부여받은 자와 동일인임을 확인하고 "회원"의 권익을 보호하기 위하여 "회원"이 선정한 문자와 숫자, 기호의 조합을 말합니다.
+                    "비회원"이라 함은 "회원"에 가입하지 않고 "회사"가 제공하는 서비스를 이용하는 자를 말합니다.
+                    “콘텐츠”라 함은 회사가 회원과의 인터뷰를 통해 작성한 인터뷰 기사와 회원이 서비스 내에서 작성하거나 등록한 게시물을 말합니다.
+                    제3조 (이용 약관의 명시와 개정)</div>
+                <input type="checkbox" name="agreement1"><span><b>이용약관에 동의합니다.</b></span>
+
+                <i class="fa-solid fa-check">
+                    <p><b>개인정보 수집 및 이용</b></p>
+                </i>
+                <div style="color: black;">본인은 귀사에 이력서를 제출함에 따라 [개인정보 보호법] 제15조 및 제17조에 따라 아래의 내용으로 개인정보를 수집, 이용 및 제공하는데 동의합니다.
+                    □ 개인정보의 수집 및 이용에 관한 사항
+                    - 수집하는 개인정보 항목 (이력서 양식 내용 일체) : 성명, 주민등록번호, 전화번호,
+                    주소, 이메일, 가족관계, 학력사항, 경력사항, 자격사항 등과 그 外 이력서 기재 내용
+                    일체
+                    - 개인정보의 이용 목적 : 수집된 개인정보를 사업장 신규 채용 서류 심사 및 인사서
+                    류로 활용하며, 목적 외의 용도로는 사용하지 않습니다.
+
+                    □ 개인정보의 보관 및 이용 기간
+                    - 귀하의 개인정보를 다음과 같이 보관하며, 수집, 이용 및 제공목적이 달성된 경우
+                    [개인정보 보호법] 제21조에 따라 처리합니다.
+                    귀하는 개인정보 및 고유식별정보 수집에 대한 동의를 거부할 권리가 있습니다. 단 부동의시 채용심사 및 4대 보험 가입과 세금관련 업무로 불이익을 받을 수 있습니다.
+                    "아이디"라 함은 회원의 식별과 회원의 서비스 이용을 위하여 "회원"이 가입 시 사용한 이메일 주소를 말합니다.
+                    "비밀번호"라 함은 "회사"의 서비스를 이용하려는 사람이 아이디를 부여받은 자와 동일인임을 확인하고 "회원"의 권익을 보호하기 위하여 "회원"이 선정한 문자와 숫자, 기호의 조합을 말합니다.
+                    "비회원"이라 함은 "회원"에 가입하지 않고 "회사"가 제공하는 서비스를 이용하는 자를 말합니다.
+                    “콘텐츠”라 함은 회사가 회원과의 인터뷰를 통해 작성한 인터뷰 기사와 회원이 서비스 내에서 작성하거나 등록한 게시물을 말합니다.</div>
+                <input type="checkbox" name="agreement2"><span><b>개인정보 수집 및 이용에 동의합니다.</b></span>
+                <input type="submit" class="agree-last-btn" value="회원가입"></input>
+            </div>
+            </form>
+        </div>
+            <footer class="footer text-faded text-center py-5">
+                <div class="container"><p class="m-0 small">3-A 오색조 팀 프로젝트</p></div>
+            </footer>
+
+        <!-- <script>
+            // 생년월일 select 자바스크립트임
+            const yearSelect = document.getElementById("year");
+            const monthSelect = document.getElementById("month");
+            const daySelect = document.getElementById("day");
+            // 1970년부터 2020년까지의 연도를 옵션으로 추가합니다
+            for (let year = 1970; year <= 2020; year++) {
+                const option = document.createElement("option");
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+            for (let month = 1; month <= 12; month++) {
+                const option = document.createElement("option");
+                option.value = month;
+                option.textContent = month;
+                monthSelect.appendChild(option);
+            }
+            for (let day = 1; day <= 31; day++) {
+                const option = document.createElement("option");
+                option.value = day;
+                option.textContent = day;
+                daySelect.appendChild(option);
+            }
+        </script> -->
+    </body>
+</html>

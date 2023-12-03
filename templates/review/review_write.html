@@ -1,0 +1,62 @@
+<!-- templates/review/review_write.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'base.html' %}
+        {% load static %}
+        <title>Sweet Spot | 리뷰</title>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            <!-- Navigation -->
+            {% include 'navbar.html' %}
+        </header>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="review-write-title"><p>리뷰 작성</p></div>
+                <div class="review-write-subject">
+                    <!-- {{ form.title }} -->
+                    <textarea name="title" placeholder="제목을 입력해주세요."></textarea>
+                    <!-- <input type="text" name="title" placeholder="제목을 입력해주세요."> -->
+                </div>
+                <div class="review-write">
+                    <!-- {{ form.content }} -->
+                    <textarea name="content" placeholder="리뷰를 작성해주세요."></textarea>
+                </div>
+
+            <div class="review-write">
+                {% if edit %}
+                <button type="submit" class="">{{ edit }}</button>
+                {% else %}
+                <button type="submit" class="">작성하기</button>
+                {% endif %}
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            var checkUnload = true;
+            $(window).on('beforeunload', function () {
+            if (checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
+            });
+            $("write").on("click", function() {
+            checkUnload = false;
+            $("submit").submit();
+            });
+        </script>
+
+        <br><br><br><br><br><br>
+
+        <footer class="footer text-faded text-center py-5">
+            <div class="container"><p class="m-0 small"><b>3-A 오색조 팀 프로젝트</b></p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>

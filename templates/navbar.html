@@ -1,0 +1,33 @@
+<!-- templates/navbar.html -->
+
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="{% url 'sweetspot:main' %}">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-lg-5" style="margin-top: 12px;">
+                    <a class="nav-link text-uppercase" href="{% url 'sweetspot:event' %}">Event
+                        <i class="fa-solid fa-bullhorn"></i></a></li>
+                <li class="nav-item px-lg-5" style="margin-top: 12px;">
+                    <a class="nav-link text-uppercase" href="{% url 'bakery:bakery_list' %}">List
+                        <i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li class="nav-item px-lg-5" style="margin-left: 100px; margin-right: 100px;">
+                    <a class="nav-link text-uppercase" href="{% url 'sweetspot:main' %}" style="font-size: 30px;">Home
+                        <i class="fa-solid fa-house"></i></a></li>
+                <li class="nav-item px-lg-5" style="margin-top: 12px;">
+                    <a class="nav-link text-uppercase" href="{% url 'review:review_list' %}">Review
+                        <i class="fa-solid fa-user"></i></a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item px-lg-5" style="margin-top: 12px;">
+                    <a class="nav-link text-uppercase" href="{% url 'users:logout' %}">Logout
+                        <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                {% else %}
+                <li class="nav-item px-lg-5" style="margin-top: 12px;">
+                    <a class="nav-link text-uppercase" href="{% url 'users:login' %}">Login
+                        <i class="fa-solid fa-right-to-bracket"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

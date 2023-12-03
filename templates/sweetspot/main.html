@@ -1,0 +1,78 @@
+<!-- sweetspot/home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Background -->
+        {% include 'base.html' %}
+        {% load static %}
+        <title>Sweet Spot | 메인 화면</title>
+    </head>
+    <body>
+        <header>
+            <!-- Navigation -->
+            {% include 'navbar.html' %}
+            <!-- SWEET SPOT 큰 글씨 -->
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary mb-3">Find the location and information of a bakery</span>
+                <span class="site-heading-lower">Sweet Spot <i class="fa-solid fa-location-dot"></i></span>
+            </h1>
+        </header>
+
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'assets/img/breadPerson1.jpg'%}" alt="..." />
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">Fresh Bread</span>
+                            <span class="section-heading-lower">BAKERY Map <i class="fa-solid fa-map-location-dot"></i></span>
+                        </h2>
+                        <p class="mb-3">● 지도 기반 빵집 정보 제공!<br>
+
+                            Sweet Spot은 지도와 내 위치 기반으로 빵집을 보여주고<br> 빵집의 위치, 운영 시간, 온라인 판매 여부 등 상세 정보를 제공해요.<br><br>
+
+
+                            ● 솔직하고 유용한 후기 작성!<br>
+
+                            여러분의 인생 빵 후기를 작성해보세요. 별점, 사진 첨부 등 풍부한<br> 후기를 작성할 수 있습니다. 더불어 다른 유저들의 빵 후기를 <br>둘러보며 빵 데이터를 쌓아보세요.<br><br>
+
+                            ● 마음에 드는 빵집과 후기는 보관함에 저장!<br>
+
+                            눈에 띄는 빵집과 후기를 보관함에 저장하여 언제든 꺼내 볼 수 <br>있어요. 새로운 빵 투어에 유용하게 사용될 수 있을거예요.</p>
+                        <div class="intro-button mx-auto">
+                            <a class="btn btn-primary btn-xl" href="#!">
+                                <button onclick="location.href='{% url 'bakery:bakery_list' %}'">
+                                    마음에 드는 빵집 찾아보기
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section cta" style="margin-top: 150px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">What is</span>
+                                <span class="section-heading-lower">Sweet Spot</span>
+                            </h2>
+                            <p class="mb-0">Sweet Spot은 달콤함의 Sweet, 지목하다의 Spot의 합친 말로 '달콤함을 지목하다' 라는 의미를 가지며<br> 주변 제과점을 찾아주는 웹사이트입니다.<br>
+                                제과점의 위치, 메뉴, 영업시간을 모두 파악하여 제과점 정보를 한눈에 볼 수 있도록<br> 서비스 제공 및 이벤트와 프로모션 연계로 지역상권에 도움을 주기 위해 만들어졌습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer text-faded text-center py-5">
+            <div class="container"><p class="m-0 small">3-A 오색조 팀 프로젝트</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js'%}"></script>
+    </body>
+</html>

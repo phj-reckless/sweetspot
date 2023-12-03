@@ -1,0 +1,75 @@
+<!-- templates/review/review_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'base.html' %}
+        {% load static %}
+        <title>Sweet Spot | 리뷰</title>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            <!-- Navigation -->
+            {% include 'navbar.html' %}
+        </header>
+
+        <div class="card">
+            <!-- 제목, 분류, 작성일 -->
+            <div class="card-header">
+                <strong>{{ review.title }}</strong><span>[리뷰]</span>
+                <span>{{ review.registered_date | date:'Y.m.d. H:i' }}</span>
+            </div>
+            <div class="card-body">
+                <!-- 작성자 -->
+                <div>
+                    <span>작성자 : {{ review.writer }}</span>
+                </div>
+                <!-- 내용 -->
+                <div>
+                    {{ review.content | safe }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            {% if review_auth or request.user.level == '1' %}
+            <button class="btn btn-sm" onclick="location.href='/review/{{ review.id }}/edit/'">수정</button>
+            <button class="btn btn-md btn-dark" onclick="location.href='/review/{{ review.id }}/delete/'">삭제</button>
+            <button onclick="location.href='/review/'">목록으로</button>
+            {% else %}
+            <button onclick="location.href='/review/'">목록으로</button>
+            {% endif %}
+        </div>
+
+<!--
+<div id="delete_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">삭제경고</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>게시글을 삭제하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="delete_modal()" type="button" class="btn btn-dark">삭제하기</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">취소하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+        <script type="text/javascript">
+            function delete_modal() {
+            location.replace('/review/{{ review.id }}/delete/');
+            }
+        </script>
+    </body>
+</html>

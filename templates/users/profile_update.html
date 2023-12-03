@@ -1,0 +1,61 @@
+<!-- templates/users/profile_update.html -->
+
+<div>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <strong>내정보수정</strong>
+                    </div>
+                    <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <table>
+                                <tr>
+                                    <td>아이디</td>
+                                    {% if user.level == '1'%}
+                                    <td>{{ user.user_id }}(관리자)</td>
+                                    {% else %}
+                                    <td>{{ user.user_id }}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>이메일</td>
+                                    <td>{{ user_change_form.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>전화번호</td>
+                                    <td>{{ user_change_form.hp }}</td>
+                                </tr>
+                            </table>
+
+                            <script type="text/javascript">
+                                form_update(this.form)
+
+                                function form_update(form) {
+                                    document.getElementsByTagName('option')[8].remove();
+                                }
+                            </script>
+
+                            <br>
+                            <div>
+                                <button onclick="location.href='/users/profile/'">돌아가기</button>
+                                <button type="submit">수정하기</button>
+                            </div>
+                        </form>
+
+                        <script type = "text/javascript">
+                            function maxLengthCheck(object){
+                                if (object.value.length > object.maxLength) {
+                                    object.value = object.value.slice(0, object.maxLength);
+                                    }
+                                }
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
