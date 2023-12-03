@@ -22,13 +22,13 @@
 
                 {% if review_list %}
                 {% for review in review_list %}
-                <div class="bakery-Review-List-name" style="cursor:pointer; margin-top: 20px; margin-left: 50px;" onclick="location.href='/review/{{ review.id }}/'">
+                <div class="bakery-Review-List-name" style="cursor:pointer; margin-top: 20px; margin-left: -800px;" onclick="location.href='/review/{{ review.id }}/'">
                     <h2><b>{{ review.writer }}</b></h2>
                 </div>
-                <div class="bakery-Review-List-text" style="cursor:pointer; margin-bottom: 0px; margin-left: 450px; " onclick="location.href='/review/{{ review.id }}/'">
+                <div class="bakery-Review-List-text" style="cursor:pointer; margin-bottom: 50px; margin-left: -800px" onclick="location.href='/review/{{ review.id }}/'">
                     <p>빵집 이름 : {{ review.title | truncatechars:30 }}</p>
                 </div>
-                <div class="bakery-Review-List-Date" style="cursor:pointer; margin-left: -200px; margin-bottom: 80px;" onclick="location.href='/review/{{ review.id }}/'">
+                <div class="bakery-Review-List-Date" style="cursor:pointer; margin-left: -200px; margin-bottom: 20px" onclick="location.href='/review/{{ review.id }}/'">
                     <p>{{ review.registered_date | date:'Y. m. d' }}</p>
                 </div>
                 {% endfor %}
@@ -46,11 +46,11 @@
 
                 <div>
                     <a href="{% url 'review:review_write' %}" class="btn btn-md btn-dark"
-                       style="margin-top: -1850px; width: 100px; height: 50px; font-size: 20px; margin-left: 800px;">글쓰기</a>
+                       style="margin-top: -1600px; width: 100px; height: 50px; font-size: 20px; margin-left: 800px;">글쓰기</a>
                 </div>
             </div>
 
-            <div style= "margin-top: -120px; margin-left: 600px;">
+            <div style= "margin-top: 10px; margin-left: 350px;">
                 {% if is_paginated %}
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
