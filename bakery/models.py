@@ -4,7 +4,7 @@ from django.conf import settings
 from uuid import uuid4
 from django.utils import timezone
 from datetime import datetime
-from config.settings import AUTH_USER_MODEL
+from config.settings.base import AUTH_USER_MODEL
 
 
 class Bakery(models.Model):
