@@ -16,19 +16,19 @@
             {% include 'navbar.html' %}
         </header>
 
-        <div class="bakery-Review">
+        <div class="bakery-Review" style="margin-top: 100px;">
             <div class="bakery-Review-Header"><h1><b><i class="fa-solid fa-arrow-left" onclick="location.href='BakeryInfo5.html'"></i>리뷰</b></h1></div>
-            <div class="bakery-Review-List-Select">
+            <div class="bakery-Review-List-Select" style="display: inline-block;">
 
                 {% if review_list %}
                 {% for review in review_list %}
-                <div class="bakery-Review-List-name" style="cursor:pointer;" onclick="location.href='/review/{{ review.id }}/'">
-                    <h3><b>{{ review.writer }}</b></h3>
+                <div class="bakery-Review-List-name" style="cursor:pointer; margin-top: 20px; margin-left: 50px;" onclick="location.href='/review/{{ review.id }}/'">
+                    <h2><b>{{ review.writer }}</b></h2>
                 </div>
-                <div class="bakery-Review-List-text" style="cursor:pointer;" onclick="location.href='/review/{{ review.id }}/'">
-                    <p>{{ review.title | truncatechars:30 }}</p>
+                <div class="bakery-Review-List-text" style="cursor:pointer; margin-bottom: 0px; margin-left: 450px; " onclick="location.href='/review/{{ review.id }}/'">
+                    <p>빵집 이름 : {{ review.title | truncatechars:30 }}</p>
                 </div>
-                <div class="bakery-Review-List-Date" style="cursor:pointer;" onclick="location.href='/review/{{ review.id }}/'">
+                <div class="bakery-Review-List-Date" style="cursor:pointer; margin-left: -200px; margin-bottom: 80px;" onclick="location.href='/review/{{ review.id }}/'">
                     <p>{{ review.registered_date | date:'Y. m. d' }}</p>
                 </div>
                 {% endfor %}
@@ -45,11 +45,12 @@
                 {% endif %}
 
                 <div>
-                    <a href="{% url 'review:review_write' %}" class="btn btn-md btn-dark">글쓰기</a>
+                    <a href="{% url 'review:review_write' %}" class="btn btn-md btn-dark"
+                       style="margin-top: -1850px; width: 100px; height: 50px; font-size: 20px; margin-left: 800px;">글쓰기</a>
                 </div>
             </div>
 
-            <div style="display: flex; justify-content: center;">
+            <div style= "margin-top: -120px; margin-left: 600px;">
                 {% if is_paginated %}
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
@@ -82,6 +83,9 @@
                 </ul>
                 {% endif %}
             </div>
+        </div>
+
+        <br><br><br>
 
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small"><b>3-A 오색조 팀 프로젝트</b></p></div>

@@ -150,7 +150,7 @@ def bakery_edit_view(request, pk):
                 'form': form,
                 'edit': '수정하기',
             }
-            return render(request, 'bakery/bakery_write.html', context)
+            return render(request, 'bakery/bakery_register.html', context)
         else:
             messages.error(request, "본인 게시글이 아닙니다.")
             return redirect('/bakery/'+str(pk))
